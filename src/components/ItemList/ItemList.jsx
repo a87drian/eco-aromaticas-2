@@ -23,39 +23,42 @@ export const ItemList = ()  => {
     }, [])
 
     return (
-        <div class="container-fluid">
-            <div className="row">
-                <div className="col"></div>
+        <div className="row justify-content-center">
+
                 
                     {items ? ( 
 
                         items.map(element => (
-                            
+
                            <Item                             
                             id={element.id}
-                            nombre={element.nombre}
-                            precio={element.precio}
-                            categoria={element.categoria}
-                            image={element.image}                            
+                            name={element.name}
+                            price={element.price}
+                            category={element.category}
+                            image={element.image}   
+                            stock={element.stock}                   
                             />
-                    
+
                         ))
                         
                     ) : 
                     
                     (
-                        <div className="col">
-                        <h2>Buscando Productos</h2>
-                        <iframe frameBorder={0} scrolling="no" src="https://lottiefiles.com/iframe/63229-mini-tricube-spinner-1"></iframe>
+  
+                        <div>
+
+                            <h2>Buscando Productos</h2>
+
+                            <iframe frameBorder={0} scrolling="no" src="https://lottiefiles.com/iframe/63229-mini-tricube-spinner-1"></iframe>
+
                         </div>
                     )}
                     
                     
 
-                <div className="col"></div>
             </div>
             
             
-        </div>
+        
     )
 }
