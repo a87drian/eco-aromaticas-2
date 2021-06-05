@@ -44,11 +44,11 @@ export const AbmItem = () => {
     return (
         <div className="container-fluid">
 
-            <div className="row">
+            <div className="row justify-content-center">
 
-            <div className="col"></div>
+            
             <div className="col">
-                <form onSubmit={handleSubmit}   >
+                <form onSubmit={handleSubmit}>
                     <div className="form-group">
                     <label htmlFor={"category"}>Categoría</label>
                     <input onChange={({target}) =>createItem('category', target.value, 'string')} type="text" className="form-control" id="category" />
@@ -68,7 +68,7 @@ export const AbmItem = () => {
                                 {error}
                             </div>}
             </div>
-            <div className="col"></div>
+            
             </div>
         </div>
 

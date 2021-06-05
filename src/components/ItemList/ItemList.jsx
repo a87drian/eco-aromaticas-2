@@ -30,7 +30,8 @@ export const ItemList = ()  => {
 
                         items.map(element => (
 
-                           <Item                             
+                           <Item
+                            key={element.id}                            
                             id={element.id}
                             name={element.name}
                             price={element.price}
