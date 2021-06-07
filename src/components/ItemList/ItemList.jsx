@@ -1,8 +1,11 @@
-import React, {useEffect, useState} from 'react'
+import React, {useEffect, useState, useContext} from 'react'
 import { getFirestore } from '../Firebase'
 import { Item } from '../Item/Item'
+import {CartContext} from "../Context/Context"
+import { SearchButton } from '../SearchButton/SearchButton';
 
 export const ItemList = ()  => {
+    const [setUser,getUser, products, productsCount, addProduct, delProduct, getGrandTotal] = useContext(CartContext);
 
     const [items, setItems] = useState('');
 
@@ -13,10 +16,7 @@ export const ItemList = ()  => {
             (querySnapshot) => {
                 
                 const data = querySnapshot.docs.map(doc => ({id:doc.id, ...doc.data()}));
-                setItems(data);
-                console.log(data)
-                console.log(items)
-                
+                setItems(data);                
             }
         ) 
 
@@ -24,8 +24,7 @@ export const ItemList = ()  => {
 
     return (
         <div className="row justify-content-center">
-
-                
+             <SearchButton items={items} />
                     {items ? ( 
 
                         items.map(element => (
@@ -54,12 +53,7 @@ export const ItemList = ()  => {
 
                         </div>
                     )}
-                    
-                    
-
             </div>
-            
-            
         
     )
 }

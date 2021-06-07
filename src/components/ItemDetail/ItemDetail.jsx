@@ -5,10 +5,11 @@ import {ItemCount} from "../ItemCount/ItemCount"
 
 
 export const ItemDetail = (props) => {
-    //const [userSet, getUser] = useContext(CartContext);
-     const [puserSet, getUser,roducts, productsCount, addProducts, delProduct, getGrandTotal] = useContext(CartContext);
-    const [item,setItem] = useState(false);
+    
+    const [userSet, getUser,products, productsCount, addProduct, delProduct, getGrandTotal] = useContext(CartContext);
+    const [item,setItem] = useState('');
     const [count, setCount] = useState(0);
+
 
     let id = props.match.params.id;
     
@@ -20,8 +21,6 @@ export const ItemDetail = (props) => {
             if(doc.exists){
                 const data = {id:doc.id,...doc.data()}
                 setItem(data)
-                console.log(item.id);
-            
 
             }
         }).catch((error) => {
@@ -44,7 +43,7 @@ export const ItemDetail = (props) => {
             stock={item.stock}
             />
 
-        <button className="btn  btn-primary" onClick={() => addProducts(item.name,count)}>Meter al carrito</button>
+        <button className="btn  btn-primary" onClick={() => addProduct(item.name,count)}>Meter al carrito</button>
      </div>
 
             

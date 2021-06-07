@@ -2,14 +2,17 @@ import React, {useContext, useEffect, useState} from "react";
 import { CartContext } from "../Context/Context";
 import { getFirestore } from '../Firebase/'
 
-export default function Cart() {
-  const [products, productsCount, addProduct, delProduct, getGrandTotal] = useContext(CartContext);
+export  function Cart() {
+  
+  const [setUser,getUser, products, productsCount, addProduct, delProduct, getGrandTotal] = useContext(CartContext);
+  
   const [OrderId, setOrderId] = useState(0);
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
   
-  const handleClick = () => {
+  const handleClick = (e) => {
+    e.preventDefault()
     const db = getFirestore();
     const order = db.collection("order");
     const newOrder = {
@@ -33,23 +36,52 @@ export default function Cart() {
   })
 
   return (
-    <div>
-      <h1>
-        Bienvenidos al Cart
-      </h1>
-      {products.map((p) => (
-        <div>
-          <p>Item: {p.nombre}</p>
-          <p>Cantidad: {p.quantity}</p>
+      <div className="container-fluid">
 
+        <div className="row justify-content-center">
+            <h1>
+                Bienvenidos al Cart
+            </h1>
         </div>
-      ))
-      }
-      
-      <label> name</label> <input type="name" onBlur={(e) => setName(e.target.value)} />
-       <label> phone</label><input type="phone"  onBlur={(e) => setPhone(e.target.value)}/>
-       <label> email</label><input type="email" onBlur={(e) => setEmail(e.target.value)} />
-      <button onClick={handleClick}>Comprar</button>
+            
+            {products.map((p) => (
+              
+                <div className="row justify-content-center">
+                  <div className="row justify-content-center">
+                    <h4>Item: {p.nombre}</h4>
+
+                  </div>
+                  <div className="row justify-content-center">
+                    <h5>Cantidad: {p.quantity}</h5>
+
+                  </div>
+
+                </div> 
+                
+            ))
+            }
+        <div className="row justify-content-center">
+                
+            <form onSubmit={handleClick}>
+                <div className="mb-3">
+                    <label htmlFor="InputName" className="form-label">Nombre</label> 
+                    <input  type="text" className="form-control" id="InputName" onBlur={(e) => setName(e.target.value)} />
+                
+                </div>       
+                <div className="mb-3">
+                    <label htmlFor="InputPhone" className="form-label">Telefono</label>
+                    <input type="text" className="form-control" id="InputPhone"  onBlur={(e) => setPhone(e.target.value)}/>
+
+                </div>
+                <div className="mb-3">
+                    <label htmlFor="InputEmail" className="form-label">Email</label>
+                    <input type="email" className="form-control" id="InputEmail" onBlur={(e) => setEmail(e.target.value)} />
+
+                </div>
+                
+                <button className="btn btn-warning">Comprar</button>
+            </form>
+        </div>
     </div>
   )
 
