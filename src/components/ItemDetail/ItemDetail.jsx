@@ -6,7 +6,9 @@ import {ItemCount} from "../ItemCount/ItemCount"
 
 export const ItemDetail = (props) => {
     
-    const [userSet, getUser,products, productsCount, addProduct, delProduct, getGrandTotal] = useContext(CartContext);
+   
+    const [items, setItems, setUser,user, products, productsCount, addProduct, delProduct, getGrandTotal]
+     = useContext(CartContext);
     const [item,setItem] = useState('');
     const [count, setCount] = useState(0);
 

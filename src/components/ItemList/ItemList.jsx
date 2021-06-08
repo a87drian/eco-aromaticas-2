@@ -5,9 +5,10 @@ import {CartContext} from "../Context/Context"
 import { SearchButton } from '../SearchButton/SearchButton';
 
 export const ItemList = ()  => {
-    const [setUser,getUser, products, productsCount, addProduct, delProduct, getGrandTotal] = useContext(CartContext);
+    const [items, setItems, setUser,getUser, products, productsCount, addProduct, delProduct, getGrandTotal]
+     = useContext(CartContext);
 
-    const [items, setItems] = useState('');
+
 
     useEffect(() => {
         const db = getFirestore();
@@ -24,7 +25,7 @@ export const ItemList = ()  => {
 
     return (
         <div className="row justify-content-center">
-             <SearchButton items={items} />
+             
                     {items ? ( 
 
                         items.map(element => (

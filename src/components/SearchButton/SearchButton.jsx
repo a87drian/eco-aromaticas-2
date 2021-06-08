@@ -1,18 +1,23 @@
-import React, {useState,useEffect} from 'react';
+import React, {useState,useEffect,useContext} from 'react';
+import {CartContext} from "../Context/Context"
 
-export  const SearchButton = (props) => {
+
+export  const SearchButton = () => {
+    const [items, setItems, setUser,getUser, products, productsCount, 
+        addProduct, delProduct, getGrandTotal]
+     = useContext(CartContext);
+
     const [filter, setFilter] = useState('')
-    const items = props.items;
-    console.log(props.items)
+    
+    
 
     useEffect(() => {
         const filteredItems = Object.values(items).filter(items => items.name.toLowerCase().includes(filter.toLowerCase()))
-        console.log(filteredItems)
+        setItems(filteredItems)
 
     }, [filter])
     return (
-        
-             
+                     
         <input value={[filter]} 
         className="form-control mr-sm-2" 
         onChange={(e) => setFilter(e.target.value)}

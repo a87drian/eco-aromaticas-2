@@ -4,7 +4,8 @@ import { getFirestore } from '../Firebase/'
 
 export  function Cart() {
   
-  const [setUser,getUser, products, productsCount, addProduct, delProduct, getGrandTotal] = useContext(CartContext);
+      const [items, setItems, setUser,user, products, productsCount, addProduct, delProduct, getGrandTotal]
+     = useContext(CartContext);
   
   const [OrderId, setOrderId] = useState(0);
   const [name, setName] = useState('');
@@ -75,7 +76,10 @@ export  function Cart() {
                 </div>
                 <div className="mb-3">
                     <label htmlFor="InputEmail" className="form-label">Email</label>
-                    <input type="email" className="form-control" id="InputEmail" onBlur={(e) => setEmail(e.target.value)} />
+                    <input type="email" className="form-control" 
+                    id="InputEmail" onBlur={(e) => setEmail(e.target.value)} 
+                    value={user.email}
+                    />
 
                 </div>
                 

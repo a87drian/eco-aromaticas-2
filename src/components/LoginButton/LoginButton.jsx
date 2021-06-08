@@ -6,43 +6,33 @@ import {CartContext} from "../Context/Context"
 
 export const LoginButton = () => {
 
-    const [userSet, getUser] = useContext(CartContext)
+    const [items, setItems, setUser,user, products, productsCount, addProduct, delProduct, getGrandTotal]
+     = useContext(CartContext);
+
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [user, setUser] = useState('');
+    
     
     const submit = (e) => {
         e.preventDefault()
         console.log(user);
-        if(user.email === '') {
-            const fire = getFirebase();
-            console.log(fire)
-            // var provider = fire.auth.GoogleAuthProvider();
-        // fire.auth().createUserWithEmailAndPassword(email,password)
-            fire.auth().signInWithEmailAndPassword(email, password)
-            .then((userCredential) => {
+        const fire = getFirebase();
+        console.log(fire)
+
+        fire.auth().signInWithEmailAndPassword(email, password)
+        .then((userCredential) => {
                 console.log(userCredential)
-                console.log(getUser)
+                console.log(setUser)
                 setUser(userCredential.user)
-                userSet(user);
+                
                 
                 
         })
-        }else {
-            logout();
-       
-        }
         
         
     }
-    const logout = async () => {
-        console.log("logout")
-        await getFirebase().auth().signOut().then(() => {
-            setUser('')
-        }
-        );
-    }
+
     return (
         <div className="container-fluid">
             <div className="row justify-content-center">
@@ -57,16 +47,7 @@ export const LoginButton = () => {
                <label htmlFor="exampleInputPassword1" className="form-label">Password</label>
                <input type="password" className="form-control" id="exampleInputPassword1" onChange={(e) => setPassword(e.target.value)} />
              </div>
-                <button type="submit" className="btn btn-primary"> 
-                {user.email === '' &&
-                    <p>Log In</p>
-                }
-                {user.email !== '' &&
-                    <p>Log Out</p>
-
-                }
-                
-                </button>
+                <button type="submit" className="btn btn-primary">Login</button>
             </form>
             
             </div>

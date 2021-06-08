@@ -6,6 +6,8 @@ export const CartContextProvider = props => {
 
     const [user, setUser] = useState('');
     const [products, setProducts] = useState([]);
+    const [items, setItems] = useState([]);
+    
   
     function addProduct(product, quantity)  {
         if(products.length === 0) {
@@ -45,12 +47,11 @@ export const CartContextProvider = props => {
         setUser(user);
         console.log(user);
     }
-    const getUser =() => {
-        return user
-    }
+
+    
 
     return (
-            <CartContext.Provider value = {[setUser,getUser, products, productsCount, addProduct, delProduct, getGrandTotal]}>
+            <CartContext.Provider value = {[items, setItems,setUser,user, products, productsCount, addProduct, delProduct, getGrandTotal]}>
                 {props.children}
             </CartContext.Provider>
 
