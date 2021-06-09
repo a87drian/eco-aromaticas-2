@@ -7,7 +7,8 @@ export  function Cart() {
       const [items, setItems, setUser,user, products, productsCount, addProduct, delProduct, getGrandTotal]
      = useContext(CartContext);
   
-  const [OrderId, setOrderId] = useState(0);
+  const [OrderId, setOrderId] = useState(false);
+  
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
@@ -27,14 +28,17 @@ export  function Cart() {
     };
     order.add(newOrder).then(({id}) => {
       setOrderId(id);
+      
     } ).catch(err =>{
       console.log("error" + err);
     });
   } 
 
   useEffect(()=>{
-    console.log(products)
-  })
+    
+      
+  },[OrderId])
+
 
   return (
       <div className="container-fluid">
@@ -43,11 +47,14 @@ export  function Cart() {
             <h1>
                 Bienvenidos al Cart
             </h1>
+                   { OrderId && (<div class="alert alert-dark" role="alert">
+                               Su compra es la {OrderId}
+                            </div>)}
         </div>
             
             {products.map((p) => (
               
-                <div className="row justify-content-center">
+                <div className="row justify-content-center" key={p.id}>
                   <div className="row justify-content-center">
                     <h4>Item: {p.nombre}</h4>
 
@@ -84,6 +91,7 @@ export  function Cart() {
                 </div>
                 
                 <button className="btn btn-warning">Comprar</button>
+         
             </form>
         </div>
     </div>

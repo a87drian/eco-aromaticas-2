@@ -8,8 +8,9 @@ export const CartContextProvider = props => {
     const [products, setProducts] = useState([]);
     const [items, setItems] = useState([]);
     
+    
   
-    function addProduct(product, quantity)  {
+    function addProduct(id,product, quantity)  {
         if(products.length === 0) {
 
             setProducts([...products, {'nombre':product, 'quantity':quantity }]);
@@ -25,7 +26,7 @@ export const CartContextProvider = props => {
                 setProducts(newProducts);
 
             }else {
-                setProducts([...products, {'nombre':product, 'quantity':quantity }]);
+                setProducts([...products, {'id':id,'nombre':product, 'quantity':quantity }]);
 
             }
         }

@@ -2,7 +2,7 @@ import React, {useEffect, useState, useContext} from 'react'
 import { getFirestore } from '../Firebase'
 import { Item } from '../Item/Item'
 import {CartContext} from "../Context/Context"
-import { SearchButton } from '../SearchButton/SearchButton';
+import "./ItemList.css"
 
 export const ItemList = ()  => {
     const [items, setItems, setUser,getUser, products, productsCount, addProduct, delProduct, getGrandTotal]
@@ -24,13 +24,19 @@ export const ItemList = ()  => {
     }, [])
 
     return (
+        <div className="contanier-fluid">
+        
+        <div className="row justify-content-center">
+             <h1>Bienvenidos a Eco</h1>
+        </div>
+
         <div className="row justify-content-center">
              
                     {items ? ( 
-
+                        
                         items.map(element => (
-
-                           <Item
+                            
+                            <Item
                             key={element.id}                            
                             id={element.id}
                             name={element.name}
@@ -39,14 +45,14 @@ export const ItemList = ()  => {
                             image={element.image}   
                             stock={element.stock}                   
                             />
-
-                        ))
-                        
-                    ) : 
-                    
-                    (
-  
-                        <div>
+                            
+                            ))
+                            
+                            ) : 
+                            
+                            (
+                                
+                                <div>
 
                             <h2>Buscando Productos</h2>
 
@@ -55,6 +61,7 @@ export const ItemList = ()  => {
                         </div>
                     )}
             </div>
+        </div>
         
     )
 }

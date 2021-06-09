@@ -1,7 +1,22 @@
-
+.nav {
+    display: grid;
+    grid-template-columns: auto 1000px auto auto auto;
+    grid-template-areas: 
+    "header1 header2 header3 header4 header5";
+}
 .cart{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 12px 0 18px;
+    grid-area: header4; 
+    margin-left: 10px;
+    margin-right: 10px;
+
+}
+.eco {
+    grid-area: header1;
+}
+.butLog {
+    grid-area: header4;
+    margin-left: 20px;
+    margin-right: 20px;
+
+
 }

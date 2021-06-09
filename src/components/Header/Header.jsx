@@ -27,28 +27,28 @@ export const Header = () => {
     return (
       
 
-        <nav className={"navbar navbar-expand-lg navbar-dark bg-dark"}>
+        <nav className={"navbar navbar-expand-lg navbar-dark bg-dark nav"}>
         <Link to={'/'}>  
-          <a className={"navbar-brand"} onMouseEnter={mouse} href="/">Eco Aromáticas</a>
+          <a className={"navbar-brand eco"} onMouseEnter={mouse} href="/">Eco Aromáticas</a>
         </Link>
          <SearchButton />
          {
          user.email ? (
             
-              <button type="button" className="btn btn-primary float-right" onClick={logout}>{user.email} Log Out</button>              
+              <button type="button" className="btn btn-primary butLog" onClick={logout}>{user.email} Log Out</button>              
             
 
          ) : (
                        
               <Link to={'/login'}>
-                <button type="button" className="btn btn-primary float-right">Log In</button>              
+                <button type="button" className="btn btn-primary float-right butLog">Log In</button>              
               </Link>
 
          )}
           <Link to={'/cart'}>
             <span className='cart'>
               <img src={basket} />
-              <p>{productsCount()}</p>
+              {productsCount()}
             </span>
             </Link>
           

@@ -3,11 +3,14 @@ import { Link } from 'react-router-dom'
 import './Item.css'
 
 export const Item = (props) => {
-    console.log('hola' + props.stock)
+    
     return (
       <div className="card" style={{ width: '18rem' }}>
           <Link to={{pathname: `/itemdetail/${props.id}`, state: {test: "test"}}}>
-            <img src={props.image} className="card-img-top" alt="..."/>
+            <img src={props.image} className="card-img-top image" alt="..."/>
+            <div className="overlay">
+              <div className="text">Comprar</div>
+            </div>
          </Link>
             <div className="card-body">
               <h5 className="card-title">{ props.name }</h5>

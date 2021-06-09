@@ -45,7 +45,7 @@ export const ItemDetail = (props) => {
             stock={item.stock}
             />
 
-        <button className="btn  btn-primary" onClick={() => addProduct(item.name,count)}>Meter al carrito</button>
+        <button className="btn  btn-primary" onClick={() => addProduct(item.id,item.name,count)}>Meter al carrito</button>
      </div>
 
             
