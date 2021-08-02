@@ -14,7 +14,7 @@ export const ItemDetail = (props) => {
 
 
     let id = props.match.params.id;
-    
+    console.log(item);
     useEffect(() => {
         const db = getFirestore();
         const fitem = db.collection("items").doc(id);
@@ -29,6 +29,7 @@ export const ItemDetail = (props) => {
             console.log("Error =>" + error);
         })
     }, [])
+    
     const giveMount = (c) => {
         setCount(c);
 
@@ -45,7 +46,13 @@ export const ItemDetail = (props) => {
             stock={item.stock}
             />
 
-        <button className="btn  btn-primary" onClick={() => addProduct(item.id,item.name,count)}>Meter al carrito</button>
+        <button className="btn  btn-primary" 
+        onClick={() => {
+            addProduct(item.id,item.name,item.price,count)
+            
+            }
+        }
+            >Meter al carrito</button>
      </div>
 
             

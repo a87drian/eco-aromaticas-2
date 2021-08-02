@@ -4,11 +4,12 @@ import { getFirestore } from '../Firebase/'
 
 export  function Cart() {
   
-      const [items, setItems, setUser,user, products, productsCount, addProduct, delProduct, getGrandTotal]
+  const [items, setItems, setUser,user, products, productsCount, addProduct, delProduct, getGrandTotal]
      = useContext(CartContext);
-  
+
+  console.log(products)
+  console.log(getGrandTotal())
   const [OrderId, setOrderId] = useState(false);
-  
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
@@ -53,23 +54,27 @@ export  function Cart() {
         </div>
             
             {products.map((p) => (
-              
-                <div className="row justify-content-center" key={p.id}>
+              <div className="card text-white bg-success mb-3" style={{width: '10rem;'}}>
+                <div className="row justify-content" key={p.id}>
                   <div className="row justify-content-center">
                     <h4>Item: {p.nombre}</h4>
-
                   </div>
                   <div className="row justify-content-center">
                     <h5>Cantidad: {p.quantity}</h5>
-
                   </div>
-
+                 <div className="row justify-content-center">
+                    <h5>Precio: {p.price}</h5>
+                  </div>
                 </div> 
-                
+                <button className="btn btn-danger" onClick={() => {delProduct(p.id)}}>Sacar del Carrito</button>
+                </div>
             ))
-            }
+          }
+           <div className="row justify-content-center">
+              <h2>Su Total es {getGrandTotal()}</h2>
+
+           </div>
         <div className="row justify-content-center">
-                
             <form onSubmit={handleClick}>
                 <div className="mb-3">
                     <label htmlFor="InputName" className="form-label">Nombre</label> 

@@ -7,13 +7,13 @@ export const CartContextProvider = props => {
     const [user, setUser] = useState('');
     const [products, setProducts] = useState([]);
     const [items, setItems] = useState([]);
-    
+    const [total, setTotal] = useState(0);
     
   
-    function addProduct(id,product, quantity)  {
+    function addProduct(id,product, price, quantity)  {
         if(products.length === 0) {
 
-            setProducts([...products, {'nombre':product, 'quantity':quantity }]);
+            setProducts([...products, {'nombre':product, 'quantity':quantity, 'price':price }]);
         }
         else  {
             const index = products.findIndex(p => p.nombre === product)
@@ -26,7 +26,7 @@ export const CartContextProvider = props => {
                 setProducts(newProducts);
 
             }else {
-                setProducts([...products, {'id':id,'nombre':product, 'quantity':quantity }]);
+                setProducts([...products, {'id':id,'nombre':product, 'quantity':quantity, 'price':price }]);
 
             }
         }
